@@ -1,0 +1,2 @@
+include ':app', ':cms'
+rootProject.name='EnterShopper'
