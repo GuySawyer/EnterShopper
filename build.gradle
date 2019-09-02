@@ -6,7 +6,7 @@ buildscript {
         compileSdkVersion = 28
         minSdkVersion = 21
         targetSdkVersion = 28
-        junitVersion = 'junit:4.12'
+        junitVersion = '4.12'
 
         // CMS Library Info
         libVersionCode = 1
