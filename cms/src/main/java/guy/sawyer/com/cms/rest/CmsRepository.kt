@@ -20,7 +20,7 @@ class CmsRepository {
     }
 
     private var retrofit: Retrofit? = null
-    private var cities = MutableLiveData<List<City>>()
+    var cities = MutableLiveData<List<City>>()
     var isStaleResponse = MutableLiveData<Boolean>()
 
     fun connectAndGetApiData(context: Context): MutableLiveData<List<City>>  {
@@ -71,7 +71,7 @@ class CmsRepository {
         }
     }
 
-    fun provideShopsInmall(mallName: String?): List<Shop>? {
+    fun provideShopsInMall(mallName: String?): List<Shop>? {
         var malls: List<Mall> = emptyList()
         cities.value?.forEach { city ->
             malls += city.malls
@@ -82,7 +82,7 @@ class CmsRepository {
         }?.shops
     }
 
-    fun provideSingleShopInmall(mallName: String, shopName: String): Shop? {
+    fun provideSingleShopInMall(mallName: String, shopName: String): Shop? {
         var malls: List<Mall> = emptyList()
         cities.value?.forEach { city ->
             malls += city.malls
@@ -93,5 +93,20 @@ class CmsRepository {
         }?.shops?.find { shop ->
             shop.name == shopName
         }
+    }
+
+    fun provideShopsInCity(cityName: String?): List<Shop>? {
+        var malls: List<Mall> = emptyList()
+        malls = cities.value?.find { city ->
+            city.name == cityName
+        }!!.malls
+
+        var shops: List<Shop> = emptyList()
+        malls.forEach { mall ->
+            mall.shops.forEach {shop ->
+                shops += shop
+            }
+        }
+        return shops
     }
 }
