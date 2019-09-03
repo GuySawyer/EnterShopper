@@ -39,6 +39,7 @@ class MainFragment : Fragment(), CitiesAdapter.CityItemClickListener {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
 
         currentActivity = activity as MainActivity
+        currentActivity.title = "Cities"
         viewModel = ViewModelProviders.of(currentActivity).get(MainViewModel::class.java)
         setupRecyclerView(currentActivity)
         return dataBinding.root
@@ -74,15 +75,13 @@ class MainFragment : Fragment(), CitiesAdapter.CityItemClickListener {
         dataBinding.rvCities.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = citiesAdapter
-            itemAnimator =DefaultItemAnimator()
+            itemAnimator = DefaultItemAnimator()
             isNestedScrollingEnabled = true
         }
         citiesAdapter!!.notifyDataSetChanged()
     }
 
     override fun onCityClicked(city: City) {
-
-
         val choices = arrayOf("View Malls", "View Shops")
         val builder = AlertDialog.Builder(context)
         with(builder)
@@ -100,7 +99,6 @@ class MainFragment : Fragment(), CitiesAdapter.CityItemClickListener {
                     }
                 }
             }
-
             setPositiveButton("Cancel", DialogInterface.OnClickListener(cancelButtonCLicked))
             show()
         }

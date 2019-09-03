@@ -30,7 +30,9 @@ class MainViewModel : ViewModel() {
 
     fun getMallInCity(cityName: String, mallName: String): Mall? = cmsRepo.provideMallInCity(cityName, mallName)
 
-    fun getShopsInMall(mallName: String?): List<Shop>? = cmsRepo.provideShopsInmall(mallName)
+    fun getShopsInMall(mallName: String?): List<Shop>? = cmsRepo.provideShopsInMall(mallName)
 
-    fun getShopInMall(mallName: String, shopName: String): Shop? = cmsRepo.provideSingleShopInmall(mallName, shopName)
+    fun getShopInMall(mallName: String, shopName: String): Shop? = cmsRepo.provideSingleShopInMall(mallName, shopName)
+
+    fun getShopsInCity(cityName: String): List<Shop>? = cmsRepo.provideShopsInCity(cityName)
 }
