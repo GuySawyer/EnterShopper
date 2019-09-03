@@ -6,12 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
-import guy.sawyer.com.cms.model.Mall
 import guy.sawyer.com.cms.model.Shop
 import guy.sawyer.com.entershopper.R
-import guy.sawyer.com.entershopper.databinding.MallItemBinding
 import guy.sawyer.com.entershopper.databinding.ShopItemBinding
-
 
 class ShopsAdapter(private var shops: List<Shop>) : RecyclerView.Adapter<ShopsAdapter.ShopsViewHolder>(){
 
@@ -25,7 +22,6 @@ class ShopsAdapter(private var shops: List<Shop>) : RecyclerView.Adapter<ShopsAd
 
     override fun onBindViewHolder(@NonNull holder: ShopsViewHolder, position: Int) {
         holder.shopName.text = shops[position].name
-        holder.shopId.text = shops[position].id.toString()
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +30,5 @@ class ShopsAdapter(private var shops: List<Shop>) : RecyclerView.Adapter<ShopsAd
 
     inner class ShopsViewHolder(itemBinding: ShopItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         var shopName: TextView = itemBinding.shopName
-        var shopId: TextView = itemBinding.shopId
     }
 }

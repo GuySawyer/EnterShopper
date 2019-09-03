@@ -1,5 +1,6 @@
 package guy.sawyer.com.entershopper.ui.adapters
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import guy.sawyer.com.cms.model.Mall
 import guy.sawyer.com.entershopper.R
 import guy.sawyer.com.entershopper.databinding.MallItemBinding
-
 
 class MallsAdapter(private var malls: List<Mall>, private var mallItemClickListener: MallItemClickListener) : RecyclerView.Adapter<MallsAdapter.MallsViewHolder>(){
 
@@ -21,9 +21,10 @@ class MallsAdapter(private var malls: List<Mall>, private var mallItemClickListe
         return MallsViewHolder(dataBinding, mallItemClickListener)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(@NonNull holder: MallsViewHolder, position: Int) {
         holder.mallName.text = malls[position].name
-        holder.mallId.text = malls[position].id.toString()
+        holder.mallInfo.text = "${malls[position].shops.count()} Shops"
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +37,7 @@ class MallsAdapter(private var malls: List<Mall>, private var mallItemClickListe
 
     inner class MallsViewHolder(itemBinding: MallItemBinding, private var mallItemClickListener: MallItemClickListener) : RecyclerView.ViewHolder(itemBinding.root) {
         var mallName: TextView = itemBinding.mallName
-        var mallId: TextView = itemBinding.mallId
+        var mallInfo: TextView = itemBinding.mallInfo
 
         init {
             itemBinding.root.setOnClickListener {

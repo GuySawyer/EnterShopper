@@ -1,5 +1,6 @@
 package guy.sawyer.com.entershopper.ui.adapters
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import guy.sawyer.com.cms.model.City
 import guy.sawyer.com.entershopper.R
 import guy.sawyer.com.entershopper.databinding.CityItemBinding
-
 
 class CitiesAdapter(private var cities: List<City>, private var cityItemClickListener: CityItemClickListener) : RecyclerView.Adapter<CitiesAdapter.CitiesViewHolder>() {
 
@@ -21,8 +21,13 @@ class CitiesAdapter(private var cities: List<City>, private var cityItemClickLis
         return CitiesViewHolder(dataBinding, cityItemClickListener)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(@NonNull holder: CitiesViewHolder, position: Int) {
-        holder.cityId.text = cities[position].id.toString()
+        var shopCount = 0
+        cities[position].malls.forEach {
+           shopCount += it.shops.count()
+        }
+        holder.cityInfo.text = "${cities[position].malls.count()} Malls with $shopCount Shops"
         holder.cityName.text = cities[position].name
     }
 
@@ -36,7 +41,7 @@ class CitiesAdapter(private var cities: List<City>, private var cityItemClickLis
 
     inner class CitiesViewHolder(itemBinding: CityItemBinding, private var cityItemClickListener: CityItemClickListener) : RecyclerView.ViewHolder(itemBinding.root) {
         var cityName: TextView = itemBinding.cityName
-        var cityId: TextView = itemBinding.cityId
+        var cityInfo: TextView = itemBinding.cityInfo
 
         init {
             itemBinding.root.setOnClickListener {
