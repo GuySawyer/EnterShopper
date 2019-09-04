@@ -1,6 +1,4 @@
-# EnterShopper
-
-CMS (CityMallShopper) Module Usage
+# CMS (CityMallShopper) Module Usage
 
 Initialization
 
@@ -33,7 +31,7 @@ Further Usage
 	
 	- cmsRepo.provideShopsInCity(cityName: String) : Will return a List<Shop> object
 
-App EnterShopper
+# EnterShopper App Usage
 
 	- This app displays a list of cities all containing malls and shops.
 
