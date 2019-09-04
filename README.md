@@ -32,3 +32,11 @@ Further Usage
 	- cmsRepo.provideSingleShopInMall(mallName: String, shopName: String) : Will return a Shop object
 	
 	- cmsRepo.provideShopsInCity(cityName: String) : Will return a List<Shop> object
+
+App EnterShopper
+
+	- This app displays a list of cities all containing malls and shops.
+
+	- Upon selection of a city, the user is prompted to choose between viewing all malls, or all shops in that city.
+
+	- If the user chooses to view malls, all malls will be displayed, and they can then view the shops in that particular mall.
